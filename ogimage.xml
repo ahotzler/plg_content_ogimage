@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.6" type="plugin" group="content" method="upgrade">
+	<name>PLG_CONTENT_OGIMAGE</name>
+	<author>Andre Hotzler</author>
+	<creationDate>24.11.2025</creationDate>
+	<copyright>Andre Hotzler</copyright>
+	<license>GPL v3</license>
+	<authorEmail>prismsyntaxhighlighter@nspw.andrehotzler.de</authorEmail>
+	<authorUrl>https://www.andrehotzler.de/en/projects/prism-prismjs-com-syntaxhighlighter-for-joomla.html</authorUrl>
+	<version>0.1</version>
+	<description>PLG_CONTENT_OGIMAGE_XML_DESCRIPTION</description>	
+	<files>
+		<filename plugin="ogimage">ogimage.php</filename>
+		<filename>LICENSE</filename>
+		<filename>README.md</filename>
+	</files>
+	<languages folder="language">
+    	<language tag="en-GB">en-GB/en-GB.plg_content_ogimage.ini</language>
+    	<language tag="en-GB">en-GB/en-GB.plg_content_ogimage.sys.ini</language>
+    	<language tag="de-DE">de-DE/de-DE.plg_content_ogimage.ini</language>
+    	<language tag="de-DE">de-DE/de-DE.plg_content_ogimage.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="default_image" type="media" label="PLG_CONTENT_OGIMAGE_DEFAULT_IMAGE_LABEL" description="PLG_CONTENT_OGIMAGE_DEFAULT_IMAGE_DESC" />
+				<field name="use_article_image" type="radio" label="PLG_CONTENT_OGIMAGE_USE_ARTICLE_IMAGE_LABEL" description="PLG_CONTENT_OGIMAGE_USE_ARTICLE_IMAGE_DESC" default="1"  layout="joomla.form.field.radio.switcher">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
