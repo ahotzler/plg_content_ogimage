@@ -5,10 +5,13 @@
 	<creationDate>24.11.2025</creationDate>
 	<copyright>Andre Hotzler</copyright>
 	<license>GPL v3</license>
-	<authorEmail>prismsyntaxhighlighter@nspw.andrehotzler.de</authorEmail>
-	<authorUrl>https://www.andrehotzler.de/en/projects/prism-prismjs-com-syntaxhighlighter-for-joomla.html</authorUrl>
-	<version>0.1</version>
+	<authorEmail>ogimage@nspw.andrehotzler.de</authorEmail>
+	<authorUrl>https://www.andrehotzler.de/en/projects/og-image-plugin-for-joomla.html</authorUrl>
+	<version>0.2</version>
 	<description>PLG_CONTENT_OGIMAGE_XML_DESCRIPTION</description>	
+	<updateservers>
+		<server type="extension" name="Updates - OG:Images for Joomla!" priority="1">https://downloads.andrehotzler.de/ogimage/ogimage_updates.xml</server>
+	</updateservers>
 	<files>
 		<filename plugin="ogimage">ogimage.php</filename>
 		<filename>LICENSE</filename>
