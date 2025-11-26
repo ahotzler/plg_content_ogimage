@@ -7,7 +7,7 @@
 	<license>GPL v3</license>
 	<authorEmail>ogimage@nspw.andrehotzler.de</authorEmail>
 	<authorUrl>https://www.andrehotzler.de/en/projects/og-image-plugin-for-joomla.html</authorUrl>
-	<version>0.3</version>
+	<version>0.4</version>
 	<description>PLG_CONTENT_OGIMAGE_XML_DESCRIPTION</description>	
 	<updateservers>
 		<server type="extension" name="Updates - OG:Images for Joomla!" priority="1">https://downloads.andrehotzler.de/ogimage/ogimage_updates.xml</server>

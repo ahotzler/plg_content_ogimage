@@ -16,7 +16,6 @@ use Joomla\CMS\Categories\Categories;
  */
 class PlgContentOgimage extends CMSPlugin
 {
-
     /**
      * Event: wird nach der Inhaltsausgabe aufgerufen
      *
@@ -27,7 +26,7 @@ class PlgContentOgimage extends CMSPlugin
      *
      * @return string Leerstring, da wir nichts an den Content anhängen
      */
-    public function onContentAfterDisplay($context, &$article, &$params, $limitstart = 0)
+    public function onContentAfterDisplay(string $context, &$article, &$params, int $limitstart = 0): string
     {
         $app = Factory::getApplication();
 
@@ -35,6 +34,7 @@ class PlgContentOgimage extends CMSPlugin
         if (!$app->isClient('site')) {
             return '';
         }
+
 
         $input = $app->input;
 
@@ -69,7 +69,6 @@ class PlgContentOgimage extends CMSPlugin
 
         // ---------------------------------------------------------------------
         // 1) Plugin-Einstellung: Artikelbild verwenden, wenn vorhanden?
-        //    Switcher: 1 = Artikelbild verwenden, 0 = nicht verwenden
         // ---------------------------------------------------------------------
         $useArticleImage = (bool) $this->params->get('use_article_image', 1);
 
@@ -157,7 +156,7 @@ class PlgContentOgimage extends CMSPlugin
         }
 
         // ---------------------------------------------------------------------
-        // 4) Bild-URL bereinigen & in Pfad umwandeln
+        // 4) Bild-URL bereinigen & in Pfad + Maße umwandeln
         // ---------------------------------------------------------------------
 
         // cleanImageURL entfernt #joomlaImage://... und width/height-Parameter
@@ -173,11 +172,32 @@ class PlgContentOgimage extends CMSPlugin
             $url = '/' . $url;
         }
 
+        // Breite und Höhe aus den Attributen holen (falls vorhanden)
+        $width  = 0;
+        $height = 0;
+
+        if (!empty($img->attributes['width'])) {
+            $width = (int) $img->attributes['width'];
+        }
+
+        if (!empty($img->attributes['height'])) {
+            $height = (int) $img->attributes['height'];
+        }
+
         // ---------------------------------------------------------------------
-        // 5) og:image setzen (nur Pfad, keine Domain/kein Protokoll)
+        // 5) og:image + og:image:width/height setzen
         // ---------------------------------------------------------------------
 
         $doc->setMetaData('og:image', $url, 'property');
+
+        if ($width > 0) {
+            $doc->setMetaData('og:image:width', (string) $width, 'property');
+        }
+
+        if ($height > 0) {
+            $doc->setMetaData('og:image:height', (string) $height, 'property');
+        }
+
         $ogImageSet = true;
 
         return '';
