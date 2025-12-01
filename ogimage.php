@@ -10,6 +10,7 @@ use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Categories\Categories;
+use Joomla\CMS\Uri\Uri;
 
 /**
  * Content Plugin: setzt og:image für com_content Artikel / Blog / Featured
@@ -34,7 +35,6 @@ class PlgContentOgimage extends CMSPlugin
         if (!$app->isClient('site')) {
             return '';
         }
-
 
         $input = $app->input;
 
@@ -185,10 +185,17 @@ class PlgContentOgimage extends CMSPlugin
         }
 
         // ---------------------------------------------------------------------
-        // 5) og:image + og:image:width/height setzen
+        // 5) Absolute URL bauen + og:image + og:image:width/height setzen
         // ---------------------------------------------------------------------
 
-        $doc->setMetaData('og:image', $url, 'property');
+        // Basis-URL (z.B. https://example.com/)
+        $root = rtrim(Uri::root(), '/');
+
+        // Absolute Bild-URL
+        $absoluteUrl = $root . $url;
+
+        // og:image mit absoluter URL
+        $doc->setMetaData('og:image', $absoluteUrl, 'property');
 
         if ($width > 0) {
             $doc->setMetaData('og:image:width', (string) $width, 'property');
