@@ -2,6 +2,9 @@
 /**
  * @package     Joomla.Plugin
  * @subpackage  Content.ogimage
+ * 
+ * @copyright   2025 Andre Hotzler
+ * @license     GNU General Public License version 3; see LICENSE
  */
 
 defined('_JEXEC') or die;
