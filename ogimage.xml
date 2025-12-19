@@ -2,12 +2,12 @@
 <extension version="3.6" type="plugin" group="content" method="upgrade">
 	<name>PLG_CONTENT_OGIMAGE</name>
 	<author>Andre Hotzler</author>
-	<creationDate>16.12.2025</creationDate>
+	<creationDate>19.12.2025</creationDate>
 	<copyright>Andre Hotzler</copyright>
 	<license>GPL v3</license>
 	<authorEmail>ogimage@nspw.andrehotzler.de</authorEmail>
 	<authorUrl>https://www.andrehotzler.de/en/projects/og-image-plugin-for-joomla.html</authorUrl>
-	<version>1.0</version>
+	<version>1.1</version>
 	<description>PLG_CONTENT_OGIMAGE_XML_DESCRIPTION</description>	
 	<updateservers>
 		<server type="extension" name="Updates - OG:Images for Joomla!" priority="1">https://downloads.andrehotzler.de/ogimage/ogimage_updates.xml</server>
@@ -22,6 +22,8 @@
     	<language tag="en-GB">en-GB/en-GB.plg_content_ogimage.sys.ini</language>
     	<language tag="de-DE">de-DE/de-DE.plg_content_ogimage.ini</language>
     	<language tag="de-DE">de-DE/de-DE.plg_content_ogimage.sys.ini</language>
+		<language tag="tr-TR">tr-TR/tr-TR.plg_content_ogimage.ini</language>
+    	<language tag="tr-TR">tr-TR/tr-TR.plg_content_ogimage.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">

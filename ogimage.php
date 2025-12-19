@@ -30,7 +30,7 @@ class PlgContentOgimage extends CMSPlugin
      *
      * @return string Leerstring, da wir nichts an den Content anhängen
      */
-    public function onContentAfterDisplay(string $context, &$article, &$params, int $limitstart = 0): string
+    public function onContentAfterDisplay(string $context, &$article, &$params, ?int $limitstart = null): string
     {
         $app = Factory::getApplication();
 
@@ -39,12 +39,48 @@ class PlgContentOgimage extends CMSPlugin
             return '';
         }
 
-        $input = $app->input;
+    $input = $app->input;
+    $doc   = $app->getDocument(); // <<< MUSS hier stehen
 
-        // Nur com_content
-        if ($input->getCmd('option') !== 'com_content') {
+    $option = $input->getCmd('option');
+
+
+    // -------------------------------------------------
+    // Fallback: Nicht com_content → nur Default-Bild
+    // -------------------------------------------------
+    if ($option !== 'com_content') {
+
+        $defaultImage = (string) $this->params->get('default_image', '');
+
+        if ($defaultImage === '') {
             return '';
         }
+
+        // Wenn bereits ein og:image existiert → nichts tun
+        $existingOg = $doc->getMetaData('og:image');
+        if (!empty($existingOg)) {
+            return '';
+        }
+
+        // Bild bereinigen
+        $img = HTMLHelper::_('cleanImageURL', $defaultImage);
+        $url = $img->url;
+
+        if ($url === '') {
+            return '';
+        }
+
+        if ($url[0] !== '/') {
+            $url = '/' . $url;
+        }
+
+        $absoluteUrl = rtrim(Uri::root(), '/') . $url;
+
+        $doc->setMetaData('og:image', $absoluteUrl, 'property');
+
+        return '';
+        }
+
 
         // Erlaubte Views: Einzelartikel, Kategorie-Blog, Hauptbeiträge/Featured
         $view         = $input->getCmd('view');
