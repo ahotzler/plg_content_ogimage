@@ -1,5 +1,5 @@
-# OG:Image Plugin for Joomla!
-The OG:Image plugin adds an og:image meta tag to com_content pages based on the article image or a configurable default image..
+# OG:Image Plugin for Joomla! (Open Graph)
+The OG:Image plugin adds an og:image meta tag (Open Graph) to com_content pages based on the article image or a configurable default image..
 
 The article-specific image must be stored in the article under “Images and Links” or, in the case of a category, under “Options.” It takes precedence over the default image specified in the plugin settings. The default image is displayed if no article-specific image has been specified..
 
